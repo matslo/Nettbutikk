@@ -1,0 +1,16 @@
+﻿@if (ViewBag.Innlogget == true)
+{
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>@ViewData["brukerpå"] <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Mine bestillinger", "MinProfil", "Konto")</li>
+        <li role="separator" class="divider"></li>
+        <li>@Html.ActionLink("Logg ut", "Loggut", "Konto")</li>
+    </ul>
+    </li>
+}
+@if (Convert.ToString(ViewData["brukerpå"]) == "Admin")
+{
+    <li></li>
+}
+

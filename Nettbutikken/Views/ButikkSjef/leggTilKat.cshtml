@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "leggTilKat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Nettbutikken.Models.Kategori
+<ul class="nav nav-pills">
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Varer <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Liste", "Index")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny vare", "Opprett")</li>
+            <li role="presentation" class="active">@Html.ActionLink("Legg til ny Kategori", "leggTilKat")</li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Kundebehandling <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Kundeliste", "Liste", "Kundebehandling", new { area = "" }, new { @class = "" })</li>
+            <li role="presentation">@Html.ActionLink("Registrer kunde", "Registrer", "Kundebehandling", new { area = "" }, new { @class = "" })</li>
+            <li role="presentation">@Html.ActionLink("Se ordrer", "Liste", "OrdreBehandling", new { area = "" }, new { @class = "" })</li>
+        </ul>
+    </li>
+   </ul>
+<div id="loggut">
+    @Html.ActionLink("Logg ut", "Loggut", "Konto", null, new { @class = "btn btn-danger" })
+</div>
+<h2>Legg til kategori</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Navn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Navn)
+            @Html.ValidationMessageFor(model => model.Navn)
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Opprett" class="btn btn-success" />
+        </p>
+    </fieldset>
+}
+
+

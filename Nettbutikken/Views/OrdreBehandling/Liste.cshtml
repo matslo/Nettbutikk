@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Nettbutikken.Model.Kvitto>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="nav nav-pills">
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Varer <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Liste", "Index", "ButikkSjef")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny vare", "Opprett", "ButikkSjef")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny Kategori", "leggTilKat", "ButikkSjef")</li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Kundebehandling <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Kundeliste", "Liste", "Kundebehandling")</li>
+            <li role="presentation">@Html.ActionLink("Registrer kunde", "Registrer", "Kundebehandling")</li>
+            <li role="presentation" class="active">@Html.ActionLink("Se ordrer", "Liste", "OrdreBehandling", new { area = "" }, new { @class = "" })</li>
+        </ul>
+    </li>
+    </ul>
+<div id="loggut">
+    @Html.ActionLink("Logg ut", "Loggut", "Konto", null, new { @class = "btn btn-danger" })
+</div>
+
+<h2>Liste</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdreId)
+            <!-- NB: dette er endret fra generert kode da den forventer en IEnumerable som modell -->
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdreDato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brukernavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Varenavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdreDato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brukernavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Varenavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.ActionLink("Se Ordrer for bruker", "enOrdre", new {b = item.Brukernavn }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+</table>
+

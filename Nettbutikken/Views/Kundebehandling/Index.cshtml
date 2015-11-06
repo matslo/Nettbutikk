@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kundebehandling</h2>
+
+<ul class="nav nav-pills">
+    <li role="presentation">@Html.ActionLink("Kundeliste", "Liste", new { area = "" }, new { @class = "" })</li>
+    <li role="presentation">@Html.ActionLink("Registrer kunde", "Registrer", new { area = "" }, new { @class = "" })</li>
+    <li role="presentation">@Html.ActionLink("Se ordrer", "Liste", "OrdreBehandling", new { area = "" }, new { @class = "" })</li>
+</ul>

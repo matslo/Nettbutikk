@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Detaljer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Nettbutikken.Model.Kunde
+<ul class="nav nav-pills">
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Varer <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Liste", "Index","ButikkSjef")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny vare", "Opprett", "ButikkSjef")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny Kategori", "leggTilKat", "ButikkSjef")</li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Kundebehandling <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation" class="active">@Html.ActionLink("Kundeliste", "Liste", new { area = "" }, new { @class = "" })</li>
+            <li role="presentation">@Html.ActionLink("Registrer kunde", "Registrer", new { area = "" }, new { @class = "" })</li>
+            <li role="presentation">@Html.ActionLink("Se ordrer", "Liste", "OrdreBehandling", new { area = "" }, new { @class = "" })</li>
+        </ul>
+    </li>
+    </ul>
+<div id="loggut">
+    @Html.ActionLink("Logg ut", "Loggut", "Konto", null, new { @class = "btn btn-danger" })
+</div>
+<h2>Detaljer</h2>
+
+<div>
+    <h4>Kunde</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brukernavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brukernavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Endre", "Endre", new { id = Model.id }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Kundeliste", "Liste", new { tom = "" }, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Ferdig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model int
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+        <span class="sr-only">100% Complete (success)</span>
+        Fullført bestilling
+    </div>
+</div>
+
+<p>Takk for at du bestilte, ditt ordrenummer er: @Model </p>
+<p>
+    Vil du handle mer?
+    @Html.ActionLink("Butikk", "Index", "Hjem")
+</p>
+
+

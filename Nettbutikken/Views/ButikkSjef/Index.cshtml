@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Nettbutikken.Models.Vare>
+
+@helper Truncate(string input, int length)
+{
+if (input.Length <= length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<ul class="nav nav-pills">
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Varer <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation" class="active">@Html.ActionLink("Liste", "Index")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny vare", "Opprett")</li>
+            <li role="presentation">@Html.ActionLink("Legg til ny Kategori", "leggTilKat")</li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Kundebehandling <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation">@Html.ActionLink("Kundeliste", "Liste", "Kundebehandling" )</li>
+            <li role="presentation">@Html.ActionLink("Registrer kunde", "Registrer","Kundebehandling")</li>
+            <li role="presentation">@Html.ActionLink("Se ordrer", "Liste", "OrdreBehandling", new { area = "" }, new { @class = "" })</li>
+        </ul>
+    </li>
+  </ul>
+<div id="loggut">
+    @Html.ActionLink("Logg ut", "Loggut", "Konto", null, new { @class = "btn btn-danger" })
+</div>
+<br />
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Kategori
+            </th>
+
+            <th>
+                Vare
+            </th>
+            <th>
+                Pris
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var vare in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => vare.Kategori.Navn)
+                </td>
+                <td>
+                    @Truncate(vare.Varenavn, 25)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => vare.Pris)
+                </td>
+                <td>
+                  
+                    @Html.ActionLink("Detaljer", "Detaljer", new { id = vare.VareId }, new { @class = "btn btn-info" })
+                     @Html.ActionLink("Endre", "Endre", new { id = vare.VareId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Slett", "Slett", new { id = vare.VareId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>

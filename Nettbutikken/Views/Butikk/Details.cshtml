@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Nettbutikken.Models.Vare
+
+@{
+    ViewBag.Title = "Vare - " + Model.Varenavn;
+}
+
+<h2>@Model.Varenavn</h2>
+
+<p>
+    <img alt="@Model.Varenavn" src="@Model.Varebilde" />
+</p>
+
+<div id="album-details">
+    <p>
+        <em>Kategori:</em>
+        @Model.Kategori.Navn
+    </p>
+    <p>
+        <em>Pris:</em>
+        @String.Format("{0:F}", Model.Pris)
+    </p>
+    <button type="button" class="btn btn-success btn-lg">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        @Html.ActionLink("Legg i vognen", "AddToCart",
+        "Handlekurv", new { id = Model.VareId }, new { @class = "kjop" })
+        </button>
+</div>
+
+
+

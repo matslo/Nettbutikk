@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+        $("#bilde").animate({height: "500px", width:"500"});
+        $("#bilde").animate({ height: "489px", width: "490px" });
+        $("#bilde").animate({ height: "500px", width: "500px" });
+        $("#bilde").animate({ height: "490px", width: "490px" });
+        $("#bilde").animate({ height: "500px", width: "500px" });
+        $("#bilde").animate({ height: "490px", width: "490px" });
+        $("#bilde").animate({ height: "500px", width: "500px" });
+        $("#bilde").animate({ height: "490px", width: "490px" });
+        $("#bilde").animate({ height: "500px", width: "500px" });
+});
+</script>
+
+@model List<Nettbutikken.Models.Vare>
+    <h1 id="velkommen">Velkommen til</h1>
+<img id="bilde" alt="altmuligrart" src="~/Content/Bilder/12214375_10153378511903285_355566493_o.jpg" height="500px" width="500px" />
+    <table class="table table-striped" id="varer">
+        
+        @foreach (var vare in Model)
+        {
+              <tr>
+                <td>
+                    <a href="@Url.Action("Details", "Butikk",
+                    new { id = vare.VareId })">
+
+                        <img alt="@vare.Varenavn" src="@vare.Varebilde" height="100px" width="100px" />
+                        <span>@vare.Varenavn</span>
+                    </a>
+                </td>
+                 
+            </tr>
+
+
+        }
+
+    </table>
+  
